@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @gvse_VERSION_MAJOR@
+#define VERSION_MINOR @gvse_VERSION_MINOR@
