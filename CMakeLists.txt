@@ -21,6 +21,11 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/ocornut/imgui
         GIT_TAG        v1.92.1
 )
+#FetchContent_Declare(
+#        implot
+#        GIT_REPOSITORY https://github.com/epezent/implot
+#        GIT_TAG        v0.16
+#)
 FetchContent_MakeAvailable(imgui)
 
 # Copy the version file and make appropriate conversion
