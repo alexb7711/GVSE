@@ -29,11 +29,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(imgui)
 
 # Copy the version file and make appropriate conversion
-configure_file(include/version.h.in include/version.h)
+configure_file(${CMAKE_SOURCE_DIR}/include/version.h.in ${CMAKE_SOURCE_DIR}/include/version.h)
 
 # Find all the source files
-file(GLOB_RECURSE sources ${CMAKE_SOURCE_DIR}/src/*.cpp)
-list(APPEND sources
+file(GLOB_RECURSE SRC_SRC ${CMAKE_SOURCE_DIR}/src/*.cpp)
+list(APPEND SRC_SRC
         ${imgui_SOURCE_DIR}/imgui.cpp
         ${imgui_SOURCE_DIR}/imgui_demo.cpp
         ${imgui_SOURCE_DIR}/imgui_draw.cpp
@@ -43,13 +43,18 @@ list(APPEND sources
         ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
-# Add executable target from the `sources` list
-add_executable(${prj} ${sources})
+file(GLOB_RECURSE SRC_LIB ${CMAKE_SOURCE_DIR}/lib/*.cpp)
+
+##==============================================================================
+# EXECUTABLE
+##==============================================================================
+# Add executable target from the `SRC_SRC` list
+add_executable(${prj}_bin ${SRC_SRC})
 
 # Define the include directories during compile time
-target_include_directories(${prj}
+target_include_directories(${prj}_bin
         PUBLIC
-        ${PROJECT_BINARY_DIR}/include
+        ${PROJECT_SOURCE_DIR}/include
 
         PRIVATE
         ${imgui_SOURCE_DIR}
@@ -59,7 +64,30 @@ target_include_directories(${prj}
 )
 
 # Specify libraries or flags when linking a given target
+target_link_libraries(${prj}_bin
+        PUBLIC
+        PRIVATE
+        ${OPENGL_LIBRARIES}
+        ${SDL2_LIBRARIES}
+)
+
+##==============================================================================
+# LIBRARY
+##==============================================================================
+add_library(${prj} SHARED ${SRC_LIB})
+target_include_directories(${prj}
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+
+        PRIVATE
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
+        ${OPENGL_DIRS}
+        ${SDL2_DIRS}
+)
+
 target_link_libraries(${prj}
+        PUBLIC
         PRIVATE
         ${OPENGL_LIBRARIES}
         ${SDL2_LIBRARIES}
