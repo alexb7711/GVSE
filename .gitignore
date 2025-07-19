@@ -42,3 +42,6 @@
 
 # CMake
 build/
+
+# Plantuml
+uml/*.png

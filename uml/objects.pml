@@ -47,6 +47,7 @@ object UDP_TCP
 
 VehicleSimulation --> UDP_TCP : Public 'Published' Data
 VehicleSimulation --> JSON    : Private 'Internal' Data
+VehicleSimulation --> GVSE    : Adding data directly via library
 
 UDP_TCP --> GVSE 
 JSON --> GVSE
