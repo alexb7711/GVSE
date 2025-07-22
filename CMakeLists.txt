@@ -46,32 +46,6 @@ list(APPEND SRC_SRC
 file(GLOB_RECURSE SRC_LIB ${CMAKE_SOURCE_DIR}/lib/*.cpp)
 
 ##==============================================================================
-# EXECUTABLE
-##==============================================================================
-# Add executable target from the `SRC_SRC` list
-add_executable(${prj}_bin ${SRC_SRC})
-
-# Define the include directories during compile time
-target_include_directories(${prj}_bin
-        PUBLIC
-        ${PROJECT_SOURCE_DIR}/include
-
-        PRIVATE
-        ${imgui_SOURCE_DIR}
-        ${imgui_SOURCE_DIR}/backends
-        ${OPENGL_DIRS}
-        ${SDL2_DIRS}
-)
-
-# Specify libraries or flags when linking a given target
-target_link_libraries(${prj}_bin
-        PUBLIC
-        PRIVATE
-        ${OPENGL_LIBRARIES}
-        ${SDL2_LIBRARIES}
-)
-
-##==============================================================================
 # LIBRARY
 ##==============================================================================
 add_library(${prj} SHARED ${SRC_LIB})
@@ -92,3 +66,32 @@ target_link_libraries(${prj}
         ${OPENGL_LIBRARIES}
         ${SDL2_LIBRARIES}
 )
+
+##==============================================================================
+# EXECUTABLE
+##==============================================================================
+# Add executable target from the `SRC_SRC` list
+add_executable(${prj}_bin ${SRC_SRC})
+
+# Define the include directories during compile time
+target_include_directories(${prj}_bin
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+
+        PRIVATE
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
+        ${OPENGL_DIRS}
+        ${SDL2_DIRS}
+)
+
+# Specify libraries or flags when linking a given target
+target_link_libraries(${prj}_bin
+        PUBLIC
+        ${prj}
+
+        PRIVATE
+        ${OPENGL_LIBRARIES}
+        ${SDL2_LIBRARIES}
+)
+
