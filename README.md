@@ -12,4 +12,5 @@ The interface is defined by transmitting data via UDP/TPC serialized in a JSON f
 - [ ] Provided a table of state data
 - [ ] Allow the state data to be modified
 - [ ] Allow data to be plotted over time
+- [ ] Windows dynamically manage themselves
 - [ ] Allow all data to be saved to disk and played back
