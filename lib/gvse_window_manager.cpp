@@ -4,59 +4,15 @@
 /// This file contains the GVSEWindowManager class definition.
 ///
 
+#include <gvse_window_manager.h>
 #include <new>
-#include <GVSE_WINDOW_MANAGER/GVSEWindowManager.h>
 
-namespace gvse
-{
-
-struct GVSEWindowManager::GVSEWindowManager_impl
-{
-  bool m_initialized;
-
-  GVSEWindowManager_impl()
-    : m_initialized(false)
-  {}
-};
+namespace gvse {
 
 //==============================================================================
-GVSEWindowManager* GVSEWindowManager::create()
-{
-  GVSEWindowManager* p_obj = new(std::nothrow) GVSEWindowManager;
-
-  if ((p_obj != nullptr) && (!p_obj->is_initialized()))
-  {
-    delete p_obj;
-    p_obj = nullptr;
-  }
-
-  return p_obj;
-}
+GVSEWindowManager::GVSEWindowManager() {}
 
 //==============================================================================
-void GVSEWindowManager::destroy(GVSEWindowManager*& p_obj)
-{
-  delete p_obj;
-  p_obj = nullptr;
-}
+GVSEWindowManager::~GVSEWindowManager() {}
 
-//==============================================================================
-GVSEWindowManager::GVSEWindowManager()
-  : mp_impl(new GVSEWindowManager_impl)
-{
-}
-
-//==============================================================================
-GVSEWindowManager::~GVSEWindowManager()
-{
-  delete mp_impl;
-}
-
-//==============================================================================
-bool GVSEWindowManager::is_initialized()
-{
-  return (mp_impl != 0) && (mp_impl->m_initialized);
-}
-
-}
-
+} // namespace gvse

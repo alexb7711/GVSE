@@ -1,26 +1,28 @@
 ///
-/// @file GVSE_WINDOW/GVSEWindow.h
+/// @file GVSE_WINDOW/WelcomeWindow.h
 ///
-/// This file contains the GVSEWindow class definition.
+/// This file contains the WelcomeWindow class definition.
 ///
 
-#ifndef GVSE_WINDOW
-#define GVSE_WINDOW
+#ifndef WELCOME_WINDOW
+#define WELCOME_WINDOW
+
+#include <gvse_window.h>
 
 namespace gvse {
 
 /// class description.
-class GVSEWindow
+class WelcomeWindow : public GVSEWindow
 {
 public:
   /// Constructor.
-  GVSEWindow();
+  WelcomeWindow();
 
   /// Run the window
-  virtual bool execute_once() = 0;
+  bool execute_once();
 
   /// Destructor.
-  ~GVSEWindow();
+  ~WelcomeWindow();
 
 private:
   /// Flag to indicate whether the window is open or not
