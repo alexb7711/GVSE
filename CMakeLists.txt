@@ -44,6 +44,16 @@ list(APPEND SRC_SRC
 )
 
 file(GLOB_RECURSE SRC_LIB ${CMAKE_SOURCE_DIR}/lib/*.cpp)
+list(APPEND SRC_LIB
+        ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_demo.cpp
+        ${imgui_SOURCE_DIR}/imgui_draw.cpp
+        ${imgui_SOURCE_DIR}/imgui_tables.cpp
+        ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl2.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+)
+
 
 ##==============================================================================
 # LIBRARY
@@ -54,6 +64,7 @@ target_include_directories(${prj}
         ${PROJECT_SOURCE_DIR}/include
 
         PRIVATE
+        ${PROJECT_SOURCE_DIR}/lib/include
         ${imgui_SOURCE_DIR}
         ${imgui_SOURCE_DIR}/backends
         ${OPENGL_DIRS}
