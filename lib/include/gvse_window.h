@@ -14,13 +14,13 @@ class GVSEWindow
 {
 public:
   /// Constructor.
-  GVSEWindow();
+  GVSEWindow() = default;
 
   /// Run the window
   virtual bool execute_once() = 0;
 
   /// Destructor.
-  ~GVSEWindow();
+  ~GVSEWindow() = default;
 
 private:
   /// Flag to indicate whether the window is open or not

@@ -10,9 +10,9 @@
 namespace gvse {
 
 //==============================================================================
-GVSEWindow::GVSEWindow() {}
+// GVSEWindow::GVSEWindow() {}
 
 //==============================================================================
-GVSEWindow::~GVSEWindow() {}
+// GVSEWindow::~GVSEWindow() {}
 
 } // namespace gvse

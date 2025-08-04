@@ -62,9 +62,9 @@ add_library(${prj} SHARED ${SRC_LIB})
 target_include_directories(${prj}
         PUBLIC
         ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/lib/include
 
         PRIVATE
-        ${PROJECT_SOURCE_DIR}/lib/include
         ${imgui_SOURCE_DIR}
         ${imgui_SOURCE_DIR}/backends
         ${OPENGL_DIRS}
