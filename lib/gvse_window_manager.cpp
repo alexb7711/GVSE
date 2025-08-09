@@ -39,13 +39,13 @@ GVSEWindowManager::subscribe(GVSEWindow* w)
 
 //==============================================================================
 bool
-GVSEWindowManager::execute()
+GVSEWindowManager::execute(WinInfo* winf)
 {
   bool success = true;
 
   for (GVSEWindow* w : this->m_windows) {
     // Process current window
-    success = w->execute_once();
+    success = w->execute_once(winf);
 
     // If the processed window fails
     if (!success) {

@@ -47,8 +47,12 @@ GVSECore::destroy(GVSECore*& p_obj)
 GVSECore::GVSECore()
   : mp_impl(new GVSECore_impl)
 {
+  // Set up SDL and ImGUI
   this->setup_sdl();
   this->setup_imgui();
+
+  // Populate the window information structure
+  this->m_winf.io = this->m_io;
 
   // FIXME: Subscribe the windows
   this->m_wm.subscribe(new WelcomeWindow());
@@ -206,7 +210,7 @@ GVSECore::run()
     ImGui::NewFrame();
 
     // Process windows
-    this->m_wm.execute();
+    this->m_wm.execute(&this->m_winf);
 
     //// 2. Show a simple window that we create ourselves. We use a Begin/End
     /// pair / to create a named window.

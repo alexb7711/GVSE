@@ -19,7 +19,7 @@ public:
   WelcomeWindow();
 
   /// Run the window
-  bool execute_once();
+  bool execute_once(WinInfo* winfo);
 
   /// Destructor.
   ~WelcomeWindow();

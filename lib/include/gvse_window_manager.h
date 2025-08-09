@@ -7,6 +7,8 @@
 #ifndef GVSE_WINDOW_MANAGER
 #define GVSE_WINDOW_MANAGER
 
+#include "win_info.h"
+
 #include <gvse_window.h>
 #include <vector>
 
@@ -26,7 +28,7 @@ public:
   bool subscribe(GVSEWindow* w);
 
   /// Run all windows once
-  bool execute();
+  bool execute(WinInfo* winf);
 
 private:
   std::vector<GVSEWindow*> m_windows;

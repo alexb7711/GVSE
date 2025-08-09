@@ -8,6 +8,7 @@
 #define GVSE_CORE
 
 #include "gvse_window_manager.h"
+#include "win_info.h"
 
 #include <SDL.h>
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -60,6 +61,8 @@ private:
   float m_main_scale;
   const char* m_glsl_version;
   ImGuiIO* m_io;
+
+  WinInfo m_winf;
 
   bool setup_sdl();
   bool setup_imgui();

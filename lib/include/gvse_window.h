@@ -7,6 +7,8 @@
 #ifndef GVSE_WINDOW
 #define GVSE_WINDOW
 
+#include "win_info.h"
+
 namespace gvse {
 
 /// class description.
@@ -17,7 +19,7 @@ public:
   GVSEWindow() = default;
 
   /// Run the window
-  virtual bool execute_once() = 0;
+  virtual bool execute_once(WinInfo* winfo) = 0;
 
   /// Destructor.
   ~GVSEWindow() = default;

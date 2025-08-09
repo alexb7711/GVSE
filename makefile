@@ -6,5 +6,10 @@ all:
 	@make -j8
 	@cd ..
 
+.ONESHELL:
+run: all
+	@cd build
+	@./gvse_bin
+
 clean:
 	@rm -rf $(BUILD_D)
