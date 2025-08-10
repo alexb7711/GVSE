@@ -1,5 +1,5 @@
 # Specify minimum required CMake version
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.20)
 
 # Enable CMake Features
 include(FetchContent)
@@ -21,12 +21,18 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/ocornut/imgui
         GIT_TAG        v1.92.1
 )
+FetchContent_Declare(
+  fmt
+  GIT_REPOSITORY https://github.com/fmtlib/fmt
+  GIT_TAG 40626af88bd7df9a5fb80be7b25ac85b122d6c21
+
+)
 #FetchContent_Declare(
 #        implot
 #        GIT_REPOSITORY https://github.com/epezent/implot
 #        GIT_TAG        v0.16
 #)
-FetchContent_MakeAvailable(imgui)
+FetchContent_MakeAvailable(imgui fmt)
 
 # Copy the version file and make appropriate conversion
 configure_file(${CMAKE_SOURCE_DIR}/include/version.h.in ${CMAKE_SOURCE_DIR}/include/version.h)
@@ -54,7 +60,6 @@ list(APPEND SRC_LIB
         ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
-
 ##==============================================================================
 # LIBRARY
 ##==============================================================================
@@ -76,6 +81,7 @@ target_link_libraries(${prj}
         PRIVATE
         ${OPENGL_LIBRARIES}
         ${SDL2_LIBRARIES}
+        fmt::fmt-header-only
 )
 
 ##==============================================================================
