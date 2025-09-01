@@ -21,18 +21,27 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/ocornut/imgui
         GIT_TAG        v1.92.1
 )
+#FetchContent_Declare(
+#        implot
+#        GIT_REPOSITORY https://github.com/epezent/implot
+#        GIT_TAG        v0.16
+#)
 FetchContent_Declare(
   fmt
   GIT_REPOSITORY https://github.com/fmtlib/fmt
   GIT_TAG 40626af88bd7df9a5fb80be7b25ac85b122d6c21
 
 )
-#FetchContent_Declare(
-#        implot
-#        GIT_REPOSITORY https://github.com/epezent/implot
-#        GIT_TAG        v0.16
-#)
-FetchContent_MakeAvailable(imgui fmt)
+# FetchContent_Declare(
+#         json
+#         URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
+# )
+FetchContent_MakeAvailable(
+        imgui
+        # implot
+        fmt
+        # json
+)
 
 # Copy the version file and make appropriate conversion
 configure_file(${CMAKE_SOURCE_DIR}/include/version.h.in ${CMAKE_SOURCE_DIR}/include/version.h)
