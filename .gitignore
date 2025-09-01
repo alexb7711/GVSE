@@ -43,6 +43,7 @@ imgui.ini
 
 # CMake
 build/
+tests/test/*
 
 # Plantuml
 uml/*.png
